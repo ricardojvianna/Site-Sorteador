@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./img-random/dice.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
+    <title>Sorteador Random</title>
+</head>
+
+<body>
+
+    <div class="box-left">
+
+        <img class="img-dice" src="./img-random/casino.gif" alt="joga-dado">
+
+        <h1> Escolha seu Número da Sorte </h1>
+
+        <div class="input-value">
+            <input id="number-min" placeholder="Primeiro Número" type="number">
+            <input id="number-max" placeholder="Segundo Número" type="number">
+        </div>
+        <div class="button-line">
+            <button class="button-luck">Boa Sorte 🍀</button>
+            <button class="button-zero">ZERAR</button>
+        </div>
+        <audio src="./sound-random/coin-recieved-230517.mp3"></audio>
+
+    </div>
+
+    <div class="box-right">
+
+        <p class="p-luck">É hora de você cruzar os seus dedos 🤞</p>
+        <div class="box-result">
+
+            <img class="img-confete-lft" src="./img-random/coins left.png" alt="moedas">
+            <p class="p-result">?</p>
+            <img class="img-confete-rgt" src="./img-random/coins right.png" alt="moedas">
+
+        </div>
+
+    </div>
+
+
+</body>
+
+<style>
+
+    /* 
+    Olá minha rede de amigos, tudo bem?
+
+
+
+Ao revisar a ferramenta Math, acabei recriando o site que realiza sorteio de um número aleatório entre dois valores informados pelo usuário. Utilizando HTML, CSS e JavaScript, eu desenvolvi o projeto com um layout estilizado, organizado com divs e aprimorado com recursos visuais, como a modificação da aparência dos inputs e a personalização da cor do placeholder e atribuição de efeito sonoro ao clicar no botão "Boa Sorte", como a aparição do número sorteado e uma explosão de moedas simultaneamente em outro label. A lógica do sorteio usa as funções Math.random, Math.ceil e Math.floor para garantir resultados precisos e dinâmicos.
+
+Com JavaScript, foi possível manipular a DOM de forma eficiente, utilizando addEventListener para capturar ações do usuário e funções que processam e exibem o resultado do sorteio. Esse projeto exemplifica a ideia de que, ao criar o hábito de estudar consistentemente, aquilo que antes parecia complicado ou entediante se transforma em algo divertido e satisfatório.
+
+
+
+Agradecimentos ao Dev Club e ao professor Rodolfo Mori.
+
+
+
+Link do projeto: 
+
+--> 
+
+
+
+#frontend #html #css #javascript #math #semDesculpas
+    
+    
+    
+    */
+    
+    * {
+        margin: 0;
+        padding: 0;
+        outline: none;
+        border: none;
+        box-sizing: border-box;
+        font-family: "Jersey 10", serif;
+        letter-spacing: 2px;
+    }
+
+    body {
+        width: 100vw;
+        height: 100vh;
+        background-image: url(./img-random/Cyber-Security.jpg);
+        display: flex;
+
+
+    }
+
+    .box-left {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        height: auto;
+        padding: 5px;
+        margin: 50px 20px;
+        background-color: rgba(0, 0, 75, 0.7);
+        border-radius: 10px;
+        border: 2px solid rgba(228, 228, 237, 0.5);
+
+    }
+
+    .img-dice {
+        height: 150px;
+        border: 2px solid #FF0000;
+        border-radius: 50%;
+        margin: 20px;
+
+    }
+
+    h1 {
+        font-size: 35px;
+        font-weight: 800;
+        color: #FF0000;
+        text-align: center;
+        margin-bottom: 25px;
+        text-shadow: 2px 3px 1px #070707;
+    }
+
+    .input-value {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+
+    }
+
+    .input-value input {
+        height: 40px;
+        width: 180px;
+        font-size: 20px;
+        font-weight: 600;
+        padding-left: 15px;
+        border-radius: 15px;
+        color: #87a900;
+
+    }
+
+    input[type=number]::-webkit-inner-spin-button {
+        appearance: none;
+    }
+
+    input::-webkit-input-placeholder {
+        color: #151414;
+    }
+
+    .button-line {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .button-luck {
+        height: 48px;
+        width: 250px;
+        background-color: #ccff00;
+        color: #151414;
+        font-size: 30px;
+        font-weight: 800;
+        border-radius: 15px;
+        padding: 5px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        transition: 500ms;
+        cursor: pointer;
+
+    }
+
+    .button-luck:hover {
+        opacity: 0.8;
+    }
+
+    .button-zero {
+        height: 90px;
+        width: 90px;
+        background-color: #EA0315;
+        color: #151414;
+        font-size: 30px;
+        font-weight: 800;
+        border-radius: 50%;
+        padding: 5px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        margin-right: 10px;
+        margin-left: 50px;
+        transition: 500ms;
+        cursor: pointer;
+
+    }
+
+    .button-zero:hover {
+        opacity: 0.8;
+    }
+
+    .box-right {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 40%;
+        height: auto;
+        padding: 5px;
+        margin: 50px 20px;
+        background-color: rgba(0, 0, 75, 0.7);
+        border-radius: 10px;
+        border: 2px solid rgba(228, 228, 237, 0.5);
+
+    }
+
+    .p-luck {
+        font-size: 44px;
+        font-weight: 400;
+        color: #FFFFFF;
+        text-align: center;
+
+    }
+
+    .box-result {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .p-result {
+        font-size: 150px;
+        font-weight: 800;
+        text-align: center;
+        margin-top: 30px;
+        color: #F9BC23 !important;
+        text-shadow: 3px 4px 1px #FEF34E ;
+
+
+    }
+
+    .img-confete-lft {
+        margin-top: 10px;
+        height: 250px;
+        opacity: 0;
+       
+    }
+
+    .img-confete-rgt {
+        margin-top: 10px;
+        height: 250px;
+        opacity: 0;
+       
+    }
+
+
+</style>
+
+<script>
+    const botaoSorteio = document.querySelector(".button-luck")
+    const soundCoin = document.querySelector("audio")
+    const botaoZerar = document.querySelector(".button-zero")
+    const result = document.querySelector(".p-result")
+    const imagemConfete = document.querySelector(".img-confete-lft")
+    const imagemConfete2 = document.querySelector(".img-confete-rgt")
+
+    function generateNumber() {
+
+        const min = Math.ceil(document.querySelector("#number-min").value)
+        const max = Math.floor(document.querySelector("#number-max").value)
+
+        const numeroSorteado = Math.floor(Math.random() * (max - min + 1)) + min;
+
+        result.innerHTML = numeroSorteado
+        soundCoin.play()
+        imagemConfete.style.opacity = 1
+        imagemConfete2.style.opacity = 1
+
+    }
+
+    botaoSorteio.addEventListener("click", generateNumber)
+
+    function deleteInput() {
+        const inputPrimeiro = document.querySelector("#number-min")
+        const inputSegundo = document.querySelector("#number-max")
+        const pResult = document.querySelector(".p-result")
+        const imagemConfete = document.querySelector(".img-confete-lft")
+        const imagemConfete2 = document.querySelector(".img-confete-rgt")
+
+
+        inputPrimeiro.value = ''
+        inputSegundo.value = ''
+        pResult.innerHTML = ''
+        imagemConfete.style.opacity = 0
+        imagemConfete2.style.opacity = 0
+    }
+
+    botaoZerar.addEventListener("click", deleteInput)
+
+</script>
+
+</html>

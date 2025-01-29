@@ -246,14 +246,17 @@
 
         const min = Math.ceil(document.querySelector("#number-min").value)
         const max = Math.floor(document.querySelector("#number-max").value)
-
+        
+        if(min >= max) {
+            alert("Esse número está maior que o segundo, digite novamente!")
+        } else{ 
         const numeroSorteado = Math.floor(Math.random() * (max - min + 1)) + min;
 
         result.innerHTML = numeroSorteado
         soundCoin.play()
         imagemConfete.style.opacity = 1
         imagemConfete2.style.opacity = 1
-
+        }
     }
 
     botaoSorteio.addEventListener("click", generateNumber)
